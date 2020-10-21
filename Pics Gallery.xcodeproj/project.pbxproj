@@ -16,6 +16,8 @@
 		F2F5C70E2540928800044ED2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2F5C70C2540928800044ED2 /* LaunchScreen.storyboard */; };
 		F2F5C7192540928900044ED2 /* Pics_GalleryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F5C7182540928900044ED2 /* Pics_GalleryTests.swift */; };
 		F2F5C7242540928900044ED2 /* Pics_GalleryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F5C7232540928900044ED2 /* Pics_GalleryUITests.swift */; };
+		F2F5C73625409C6000044ED2 /* Picture.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F5C73525409C6000044ED2 /* Picture.swift */; };
+		F2F5C73F2540A25200044ED2 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F5C73E2540A25200044ED2 /* NetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,8 @@
 		F2F5C71F2540928900044ED2 /* Pics GalleryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Pics GalleryUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2F5C7232540928900044ED2 /* Pics_GalleryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pics_GalleryUITests.swift; sourceTree = "<group>"; };
 		F2F5C7252540928900044ED2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F2F5C73525409C6000044ED2 /* Picture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Picture.swift; sourceTree = "<group>"; };
+		F2F5C73E2540A25200044ED2 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +105,8 @@
 		F2F5C6FD2540928500044ED2 /* Pics Gallery */ = {
 			isa = PBXGroup;
 			children = (
+				F2F5C73D2540A0B300044ED2 /* Managers */,
+				F2F5C73425409C4700044ED2 /* Model */,
 				F2F5C6FE2540928500044ED2 /* AppDelegate.swift */,
 				F2F5C7002540928500044ED2 /* SceneDelegate.swift */,
 				F2F5C7022540928500044ED2 /* ViewController.swift */,
@@ -129,6 +135,22 @@
 				F2F5C7252540928900044ED2 /* Info.plist */,
 			);
 			path = "Pics GalleryUITests";
+			sourceTree = "<group>";
+		};
+		F2F5C73425409C4700044ED2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F2F5C73525409C6000044ED2 /* Picture.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F2F5C73D2540A0B300044ED2 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				F2F5C73E2540A25200044ED2 /* NetworkManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,7 +283,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F2F5C73F2540A25200044ED2 /* NetworkManager.swift in Sources */,
 				F2F5C7032540928500044ED2 /* ViewController.swift in Sources */,
+				F2F5C73625409C6000044ED2 /* Picture.swift in Sources */,
 				F2F5C6FF2540928500044ED2 /* AppDelegate.swift in Sources */,
 				F2F5C7012540928500044ED2 /* SceneDelegate.swift in Sources */,
 				F2F5C7092540928500044ED2 /* Pics_Gallery.xcdatamodeld in Sources */,
@@ -450,7 +474,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.leonidkuznetsov.Pics-Gallery";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -469,7 +493,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.leonidkuznetsov.Pics-Gallery";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
