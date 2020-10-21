@@ -18,6 +18,7 @@
 		F2F5C7242540928900044ED2 /* Pics_GalleryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F5C7232540928900044ED2 /* Pics_GalleryUITests.swift */; };
 		F2F5C73625409C6000044ED2 /* Picture.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F5C73525409C6000044ED2 /* Picture.swift */; };
 		F2F5C73F2540A25200044ED2 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F5C73E2540A25200044ED2 /* NetworkManager.swift */; };
+		F2F5C7452540BAB400044ED2 /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F5C7442540BAB400044ED2 /* ErrorMessage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		F2F5C7252540928900044ED2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F2F5C73525409C6000044ED2 /* Picture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Picture.swift; sourceTree = "<group>"; };
 		F2F5C73E2540A25200044ED2 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		F2F5C7442540BAB400044ED2 /* ErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 		F2F5C6FD2540928500044ED2 /* Pics Gallery */ = {
 			isa = PBXGroup;
 			children = (
+				F2F5C7432540BAA500044ED2 /* Utilities */,
 				F2F5C73D2540A0B300044ED2 /* Managers */,
 				F2F5C73425409C4700044ED2 /* Model */,
 				F2F5C6FE2540928500044ED2 /* AppDelegate.swift */,
@@ -151,6 +154,14 @@
 				F2F5C73E2540A25200044ED2 /* NetworkManager.swift */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		F2F5C7432540BAA500044ED2 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				F2F5C7442540BAB400044ED2 /* ErrorMessage.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -284,6 +295,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F2F5C73F2540A25200044ED2 /* NetworkManager.swift in Sources */,
+				F2F5C7452540BAB400044ED2 /* ErrorMessage.swift in Sources */,
 				F2F5C7032540928500044ED2 /* ViewController.swift in Sources */,
 				F2F5C73625409C6000044ED2 /* Picture.swift in Sources */,
 				F2F5C6FF2540928500044ED2 /* AppDelegate.swift in Sources */,

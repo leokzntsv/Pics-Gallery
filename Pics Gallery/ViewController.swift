@@ -11,9 +11,16 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        NetworkManager.shared.getPictures(album: 1) { (pictures, errorMessage) in
+            guard let pictures = pictures else {
+                print(errorMessage!)
+                return
+            }
+            
+            print("\(pictures.count)")
+            print(pictures)
+        }
     }
-
-
 }
 

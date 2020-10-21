@@ -12,5 +12,4 @@ struct Picture: Codable {
     var title: String
     var url: String
     var thumbnailUrl: String
-    var isDownloaded = false
 }
