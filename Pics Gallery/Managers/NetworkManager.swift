@@ -14,36 +14,36 @@ class NetworkManager {
     private init() {}
     
     
-    func getPictures(album: Int, completed: @escaping ([Picture]?, ErrorMessage?) -> Void) {
+    func getPictures(album: Int, completed: @escaping (Result<[Picture], ErrorMessage>) -> Void) {
         let endpoint = baseURL + "\(album)/photos"
         
         guard let url = URL(string: endpoint) else {
-            completed(nil, .invalidRequest)
+            completed(.failure(.invalidRequest))
             return
         }
         
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             
             if let _ = error {
-                completed(nil, .unableToComplete)
+                completed(.failure(.unableToComplete))
                 return
             }
             
             guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-                completed(nil, .invalidResponse)
+                completed(.failure(.invalidResponse))
                 return
             }
             
             guard let data = data else {
-                completed(nil, .invalidData)
+                completed(.failure(.invalidData))
                 return
             }
             
             do {
                 let pictures = try JSONDecoder().decode([Picture].self, from: data)
-                completed(pictures, nil)
+                completed(.success(pictures))
             } catch {
-                completed(nil, .invalidData)
+                completed(.failure(.invalidData))
             }
         }
         

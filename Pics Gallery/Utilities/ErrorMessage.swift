@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum ErrorMessage: String {
+enum ErrorMessage: String, Error {
     case invalidRequest     = "Invalid request."
     case unableToComplete   = "Unable to complete your request."
     case invalidResponse    = "Invalid response from the server."
