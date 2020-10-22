@@ -23,7 +23,7 @@ class PictureTitleLabel: UILabel {
     
     convenience init(fontSize: CGFloat) {
         self.init(frame: .zero)
-        self.font = UIFont.systemFont(ofSize: fontSize, weight: .regular)
+        self.font = UIFont.systemFont(ofSize: fontSize, weight: .semibold)
     }
     
     

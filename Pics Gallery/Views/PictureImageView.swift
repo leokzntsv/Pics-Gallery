@@ -25,8 +25,10 @@ class PictureImageView: UIImageView {
     
     
     private func configure() {
-        layer.cornerRadius  = 8
+        layer.cornerRadius  = 10
         clipsToBounds       = true
+        contentMode         = .scaleAspectFit
+        tintColor           = .systemGray
         image               = placeholderImage
         translatesAutoresizingMaskIntoConstraints = false
     }
