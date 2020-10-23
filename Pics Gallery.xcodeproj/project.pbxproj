@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F2C7C7102543144E003E74DC /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C7C70F2543144E003E74DC /* CoreDataManager.swift */; };
 		F2D4AFF0254160D400839D75 /* PictureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D4AFEF254160D400839D75 /* PictureCell.swift */; };
 		F2D4AFF52541615D00839D75 /* PictureImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D4AFF42541615D00839D75 /* PictureImageView.swift */; };
 		F2D4AFFA2541645B00839D75 /* PictureTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D4AFF92541645B00839D75 /* PictureTitleLabel.swift */; };
@@ -44,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F2C7C70F2543144E003E74DC /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		F2D4AFEF254160D400839D75 /* PictureCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureCell.swift; sourceTree = "<group>"; };
 		F2D4AFF42541615D00839D75 /* PictureImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureImageView.swift; sourceTree = "<group>"; };
 		F2D4AFF92541645B00839D75 /* PictureTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureTitleLabel.swift; sourceTree = "<group>"; };
@@ -94,16 +96,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		F2D4AFEE2541609200839D75 /* Views */ = {
+		F2C7C70B2542CFC6003E74DC /* Screens */ = {
 			isa = PBXGroup;
 			children = (
 				F2D4B0032541728700839D75 /* PictureCollectionVC.swift */,
 				F2D4B01A2541E50A00839D75 /* PictureVC.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		F2D4AFEE2541609200839D75 /* Custom Views */ = {
+			isa = PBXGroup;
+			children = (
 				F2D4AFEF254160D400839D75 /* PictureCell.swift */,
 				F2D4AFF42541615D00839D75 /* PictureImageView.swift */,
 				F2D4AFF92541645B00839D75 /* PictureTitleLabel.swift */,
 			);
-			path = Views;
+			path = "Custom Views";
 			sourceTree = "<group>";
 		};
 		F2D4AFFE25416A9600839D75 /* Support */ = {
@@ -150,13 +159,13 @@
 			isa = PBXGroup;
 			children = (
 				F2F5C73425409C4700044ED2 /* Model */,
-				F2D4AFEE2541609200839D75 /* Views */,
+				F2C7C70B2542CFC6003E74DC /* Screens */,
+				F2D4AFEE2541609200839D75 /* Custom Views */,
 				F2F5C73D2540A0B300044ED2 /* Managers */,
 				F2D4B0142541D3BD00839D75 /* Extensions */,
 				F2F5C7432540BAA500044ED2 /* Utilities */,
 				F2D4AFFE25416A9600839D75 /* Support */,
 				F2F5C70F2540928800044ED2 /* Info.plist */,
-				F2F5C7072540928500044ED2 /* Pics_Gallery.xcdatamodeld */,
 			);
 			path = "Pics Gallery";
 			sourceTree = "<group>";
@@ -183,6 +192,7 @@
 			isa = PBXGroup;
 			children = (
 				F2F5C73525409C6000044ED2 /* Picture.swift */,
+				F2F5C7072540928500044ED2 /* Pics_Gallery.xcdatamodeld */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -191,6 +201,7 @@
 			isa = PBXGroup;
 			children = (
 				F2F5C73E2540A25200044ED2 /* NetworkManager.swift */,
+				F2C7C70F2543144E003E74DC /* CoreDataManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -340,6 +351,7 @@
 				F2F5C7452540BAB400044ED2 /* ErrorMessage.swift in Sources */,
 				F2F5C73625409C6000044ED2 /* Picture.swift in Sources */,
 				F2D4AFF52541615D00839D75 /* PictureImageView.swift in Sources */,
+				F2C7C7102543144E003E74DC /* CoreDataManager.swift in Sources */,
 				F2D4B0042541728700839D75 /* PictureCollectionVC.swift in Sources */,
 				F2F5C6FF2540928500044ED2 /* AppDelegate.swift in Sources */,
 				F2F5C7012540928500044ED2 /* SceneDelegate.swift in Sources */,

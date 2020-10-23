@@ -16,6 +16,9 @@ class PictureCollectionVC: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
+        
         configureCollectionView()
         getPictures(page: page)
     }
@@ -32,12 +35,12 @@ class PictureCollectionVC: UICollectionViewController {
         let width                       = view.bounds.width
         let padding: CGFloat            = 15
         let minimumItemSpacing: CGFloat = 15
-        let availableWidth              = width - (padding * 2) - minimumItemSpacing * 3
+        let availableWidth              = width - (padding * 2) - minimumItemSpacing * 2
         let itemWidth                   = availableWidth / 3
         
         let flowLayout                  = UICollectionViewFlowLayout()
         flowLayout.sectionInset         = UIEdgeInsets(top: padding, left: padding, bottom: padding, right: padding)
-        flowLayout.itemSize             = CGSize(width: itemWidth, height: itemWidth + 30)
+        flowLayout.itemSize             = CGSize(width: itemWidth, height: itemWidth + 50)
         
         return flowLayout
     }
@@ -76,7 +79,7 @@ class PictureCollectionVC: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PictureCell.reuseID, for: indexPath) as! PictureCell
-        cell.set(picture: pictures[indexPath.item], isDownloaded: false)
+        cell.set(picture: pictures[indexPath.item])
         
         return cell
     }
@@ -103,6 +106,12 @@ class PictureCollectionVC: UICollectionViewController {
         let destVC              = PictureVC()
         destVC.pictureTitle     = picture.title
         destVC.pictureUrl       = picture.url
+        destVC.pictureId        = picture.id
+        
+        destVC.onDoneBlock      = { result in
+            collectionView.reloadData()
+        }
+        
         let navController       = UINavigationController(rootViewController: destVC)
         present(navController, animated: true)
     }

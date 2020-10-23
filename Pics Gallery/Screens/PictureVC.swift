@@ -11,9 +11,12 @@ class PictureVC: UIViewController {
     
     var pictureTitle: String!
     var pictureUrl: String!
+    var pictureId: Int!
     
     let pictureImageView = PictureImageView(frame: .zero)
     let titleLabel       = PictureTitleLabel(fontSize: 20)
+    
+    var onDoneBlock: ((Bool) -> Void)?
     
 
     override func viewDidLoad() {
@@ -27,13 +30,25 @@ class PictureVC: UIViewController {
     
     @objc func dismissVC() {
         dismiss(animated: true)
+        onDoneBlock!(true)
     }
     
     
     private func setPictureImageView(with urlString: String) {
-        NetworkManager.shared.downloadPicture(from: urlString) { [weak self] (image) in
-            guard let self = self else { return }
-            DispatchQueue.main.async { self.pictureImageView.image = image }
+        
+        guard let imageIsSaved = CoreDataManager.shared.checkById(id: pictureId) else { return }
+        
+        if imageIsSaved {
+            let image = CoreDataManager.shared.fetchImage(id: pictureId)
+            self.pictureImageView.image = image
+        } else {
+            NetworkManager.shared.downloadPicture(from: urlString) { [weak self] (image) in
+                guard let self = self, let image = image else { return }
+                DispatchQueue.main.async {
+                    CoreDataManager.shared.saveImage(id: self.pictureId, image: image)
+                    self.pictureImageView.image = image
+                }
+            }
         }
     }
     
@@ -61,7 +76,6 @@ class PictureVC: UIViewController {
     
     private func configureTitleLabel() {
         titleLabel.text             = pictureTitle
-        titleLabel.lineBreakMode    = .byWordWrapping
         titleLabel.numberOfLines    = 2
         
         view.addSubview(titleLabel)
@@ -69,7 +83,7 @@ class PictureVC: UIViewController {
         let padding: CGFloat = 20
         
         NSLayoutConstraint.activate([
-            titleLabel.bottomAnchor.constraint(equalTo: pictureImageView.topAnchor, constant: -50),
+            titleLabel.bottomAnchor.constraint(equalTo: pictureImageView.topAnchor, constant: -20),
             titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
             titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding)
         ])

@@ -11,8 +11,8 @@ class PictureCell: UICollectionViewCell {
     
     static let reuseID          = "PictureCell"
     let pictureImageView        = PictureImageView(frame: .zero)
-    let titleLabel              = PictureTitleLabel(fontSize: 16)
-    let isDownloadedImageView   = UIImageView()
+    let titleLabel              = PictureTitleLabel(fontSize: 14)
+    let downloadedImageView     = UIImageView()
     
     
     override init(frame: CGRect) {
@@ -20,7 +20,7 @@ class PictureCell: UICollectionViewCell {
         
         configurePictureImageView()
         configureTitleLabel()
-        configureIsDownloadedImageView()
+        configureDownloadedImageView()
     }
     
     
@@ -29,11 +29,13 @@ class PictureCell: UICollectionViewCell {
     }
     
     
-    func set(picture: Picture, isDownloaded: Bool) {
-        titleLabel.text                 = picture.title
-        isDownloadedImageView.tintColor = isDownloaded ? .systemGreen : .systemGray2
+    func set(picture: Picture) {
+        titleLabel.text = picture.title
         
-        NetworkManager.shared.downloadThumbnail(from: picture.thumbnailUrl) { [weak self] (image) in
+        guard let imageIsSaved = CoreDataManager.shared.checkById(id: picture.id) else { return }
+        downloadedImageView.tintColor = imageIsSaved ? .systemGreen : .systemGray2
+        
+        NetworkManager.shared.downloadPicture(from: picture.thumbnailUrl) { [weak self] (image) in
             guard let self = self else { return }
             DispatchQueue.main.async { self.pictureImageView.image = image }
         }
@@ -55,6 +57,9 @@ class PictureCell: UICollectionViewCell {
     
     
     private func configureTitleLabel() {
+        titleLabel.lineBreakMode = .byTruncatingTail
+        titleLabel.numberOfLines = 3
+        
         addSubview(titleLabel)
         
         let padding: CGFloat = 5
@@ -63,24 +68,24 @@ class PictureCell: UICollectionViewCell {
             titleLabel.topAnchor.constraint(equalTo: pictureImageView.bottomAnchor, constant: 8),
             titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: padding),
             titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -padding),
-            titleLabel.heightAnchor.constraint(equalToConstant: 20)
+            titleLabel.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
     
     
-    private func configureIsDownloadedImageView() {
-        isDownloadedImageView.image     = UIImage(systemName: "square.and.arrow.down.fill")
+    private func configureDownloadedImageView() {
+        downloadedImageView.image = UIImage(systemName: "square.and.arrow.down.fill")
         
-        addSubview(isDownloadedImageView)
-        isDownloadedImageView.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(downloadedImageView)
+        downloadedImageView.translatesAutoresizingMaskIntoConstraints = false
         
         let padding: CGFloat = 5
         
         NSLayoutConstraint.activate([
-            isDownloadedImageView.topAnchor.constraint(equalTo: pictureImageView.topAnchor, constant: padding),
-            isDownloadedImageView.trailingAnchor.constraint(equalTo: pictureImageView.trailingAnchor, constant: -padding),
-            isDownloadedImageView.heightAnchor.constraint(equalToConstant: 30),
-            isDownloadedImageView.widthAnchor.constraint(equalTo: isDownloadedImageView.heightAnchor)
+            downloadedImageView.topAnchor.constraint(equalTo: pictureImageView.topAnchor, constant: padding),
+            downloadedImageView.trailingAnchor.constraint(equalTo: pictureImageView.trailingAnchor, constant: -padding),
+            downloadedImageView.heightAnchor.constraint(equalToConstant: 30),
+            downloadedImageView.widthAnchor.constraint(equalTo: downloadedImageView.heightAnchor)
         ])
     }
 }
