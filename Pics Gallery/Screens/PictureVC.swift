@@ -28,7 +28,7 @@ class PictureVC: UIViewController {
     }
     
     
-    @objc func dismissVC() {
+    @objc private func dismissVC() {
         dismiss(animated: true)
         onDoneBlock!(true)
     }

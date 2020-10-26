@@ -17,8 +17,6 @@ class PictureCollectionVC: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
-        
         configureCollectionView()
         getPictures(page: page)
     }
@@ -31,7 +29,7 @@ class PictureCollectionVC: UICollectionViewController {
     }
     
     
-    func createFlowLayout() -> UICollectionViewFlowLayout {
+    private func createFlowLayout() -> UICollectionViewFlowLayout {
         let width                       = view.bounds.width
         let padding: CGFloat            = 15
         let minimumItemSpacing: CGFloat = 15
@@ -46,7 +44,7 @@ class PictureCollectionVC: UICollectionViewController {
     }
     
     
-    func getPictures(page: Int) {
+    private func getPictures(page: Int) {
         showLoadingView()
         NetworkManager.shared.getPictures(album: page) { [weak self] result in
             guard let self = self else { return }
