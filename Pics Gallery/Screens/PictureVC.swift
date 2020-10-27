@@ -57,6 +57,7 @@ class PictureVC: UIViewController {
         view.backgroundColor = .systemBackground
         let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissVC))
         navigationItem.rightBarButtonItem = doneButton
+        navigationController?.presentationController?.delegate = self
     }
     
     
@@ -87,5 +88,15 @@ class PictureVC: UIViewController {
             titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
             titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding)
         ])
+    }
+}
+
+// MARK: - UIAdaptivePresentationControllerDelegate
+
+
+extension PictureVC: UIAdaptivePresentationControllerDelegate {
+    
+    func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
+        onDoneBlock!(true)
     }
 }
