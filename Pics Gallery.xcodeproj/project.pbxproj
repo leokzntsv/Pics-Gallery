@@ -121,8 +121,8 @@
 				F2F5C6FE2540928500044ED2 /* AppDelegate.swift */,
 				F2F5C7002540928500044ED2 /* SceneDelegate.swift */,
 				F2F5C7042540928500044ED2 /* Main.storyboard */,
-				F2F5C70A2540928800044ED2 /* Assets.xcassets */,
 				F2F5C70C2540928800044ED2 /* LaunchScreen.storyboard */,
+				F2F5C70A2540928800044ED2 /* Assets.xcassets */,
 			);
 			path = Support;
 			sourceTree = "<group>";

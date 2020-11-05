@@ -38,17 +38,14 @@ class CoreDataManager {
         let managedContext      = appDelegate.persistentContainer.viewContext
         
         let fetchRequest = NSFetchRequest<PictureEntity>(entityName: "PictureEntity")
+        let idString = "\(id)"
+        let predicate = NSPredicate(format: "id == %@", idString)
+        fetchRequest.predicate = predicate
         
         do {
             let pictureEntity = try managedContext.fetch(fetchRequest)
-            var image: UIImage?
-            for picture in pictureEntity {
-                if picture.id == id {
-                    image = UIImage(data: picture.pictureData!)
-                    break
-                }
-            }
-            return image
+            guard let pictureData = pictureEntity.first?.pictureData else { return nil }
+            return UIImage(data: pictureData)
         } catch let error as NSError {
             print("Could not fetch. \(error)")
             return nil
@@ -62,17 +59,14 @@ class CoreDataManager {
         let managedContext      = appDelegate.persistentContainer.viewContext
         
         let fetchRequest = NSFetchRequest<PictureEntity>(entityName: "PictureEntity")
+        let idString = "\(id)"
+        let predicate = NSPredicate(format: "id == %@", idString)
+        fetchRequest.predicate = predicate
         
         do {
             let pictureEntity = try managedContext.fetch(fetchRequest)
-            var idExists = false
-            for picture in pictureEntity {
-                if picture.id == id {
-                    idExists = true
-                    break
-                }
-            }
-            return idExists
+            guard let _ = pictureEntity.first else { return false }
+            return true
         } catch let error as NSError {
             print("Could not fetch. \(error)")
             return nil
